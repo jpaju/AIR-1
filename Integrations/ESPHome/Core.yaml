@@ -302,6 +302,7 @@ sensor:
     co2:
       name: "CO2"
       id: "co2"
+      accuracy_decimals: 0
       on_value:
         - if:
             condition:
@@ -319,12 +320,14 @@ sensor:
     pressure:
       name: "DPS310 Pressure"
       id: dps310pressure
+      accuracy_decimals: 1
       filters:
         - lambda: |-
             float offset = id(dps310_pressure_offset).state;
             return isnan(offset) ? x : x + offset;
     temperature:
       id: dps310temperature
+      accuracy_decimals: 1
     update_interval: 30s
     i2c_id: bus_a
 
@@ -361,6 +364,7 @@ sensor:
     voc_index:
       name: "SEN55 VOC"
       id: sen55_voc
+      accuracy_decimals: 0
       on_value:
         - if:
             condition:
@@ -378,6 +382,7 @@ sensor:
     nox_index:
       name: "SEN55 NOX"
       id: sen55_nox
+      accuracy_decimals: 0
     acceleration_mode: low
     store_baseline: true
     # Some units misreport SEN54 on the product name register even though the
@@ -395,6 +400,7 @@ sensor:
     unit_of_measurement: "µg/m³"
     state_class: measurement
     icon: mdi:air-filter
+    accuracy_decimals: 1
     update_interval: 10s
   
   - platform: template
@@ -405,6 +411,7 @@ sensor:
     unit_of_measurement: "µg/m³"
     state_class: measurement
     icon: mdi:air-filter
+    accuracy_decimals: 1
     update_interval: 10s
   
   - platform: template
@@ -415,6 +422,7 @@ sensor:
     unit_of_measurement: "µg/m³"
     state_class: measurement
     icon: mdi:air-filter
+    accuracy_decimals: 1
     update_interval: 10s
 
   - platform: template
@@ -425,6 +433,7 @@ sensor:
     unit_of_measurement: "µg/m³"
     state_class: measurement
     icon: mdi:air-filter
+    accuracy_decimals: 1
     update_interval: 10s
 
   - platform: aqi
@@ -434,6 +443,7 @@ sensor:
     pm_10_0: pm_10_0
     calculation_type: AQI
     device_class: aqi
+    accuracy_decimals: 0
     on_value:
       - if:
           condition:
@@ -446,21 +456,27 @@ sensor:
     nitrogen_dioxide:
       name: Nitrogen Dioxide
       id: nitrogen_dioxide
+      accuracy_decimals: 2
     carbon_monoxide:
       name: Carbon Monoxide
       id: carbon_monoxide
+      accuracy_decimals: 2
     hydrogen:
       name: Hydrogen
       id: hydrogen
+      accuracy_decimals: 2
     ethanol:
       name: Ethanol
       id: ethanol
+      accuracy_decimals: 1
     methane:
       name: Methane
       id: methane
+      accuracy_decimals: 1
     ammonia:
       name: Ammonia
       id: ammonia
+      accuracy_decimals: 1
     update_interval: 60s
 
 light:
